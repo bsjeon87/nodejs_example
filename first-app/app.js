@@ -16,13 +16,13 @@ fs.readdir("./", function (err, files) {
   else console.log("Result", files);
 }); */
 
-const EventEmitter = require("events");
-const emitter = new EventEmitter();
-
-//register a listener
-emitter.on("meesageLogged", function () {
-  console.log("Listner called");
+const Logger = require("./logger");
+const logger = new Logger();
+logger.on("meesageLogged", (arg) => {
+  console.log("Listner called", arg);
+});
+logger.on("meesageLogged", (arg) => {
+  console.log("Listner called2", arg);
 });
 
-//raise an event
-emitter.emit("meesageLogged");
+logger.log("message");
