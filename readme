@@ -6,3 +6,7 @@ npm -> https://www.npmjs.com/ 에 있는 module들의 download를 진행가능.
 package.json -> some basic information about the app .( dependency등.)
                 모든 node 어플리케이션은 스탠다드로 package.json을 가져야함.
          (npm init 수행 시 자동으로 생성 ( default 사용 npm init --yes).)
+
+
+npm i ~~~ --save ( package.json에 dependency 추가: 현재 default --save가
+적용되고있어 안적어도됨.)
