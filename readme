@@ -90,3 +90,10 @@ npm i lion-lib-jeonbs (node_module밑에 이전에 deploy진행한 코드와
 
 모듈 업데이트시
 package.json의 version업데이트 후(수동 package.json 혹은 npm version minor사용) publish
+
+nodemon
+=> node i nodemon
+=> node_modules/nodemon/bin/nodemon.js index.js (자동실행.)
+
+node app에서 port를 환경변수에서 가지고 오게 설정
+=> 환경변수는 mac/linux: export PORT=5000 , set PORT=5000
