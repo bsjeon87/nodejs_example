@@ -10,3 +10,25 @@ package.json -> some basic information about the app .( dependency등.)
 
 npm i ~~~ --save ( package.json에 dependency 추가: 현재 default --save가
 적용되고있어 안적어도됨.)
+
+npm 예전버전은
+package install시 해당 package만 node_module밑에 설치하고
+dependecy에 대해서는 package 폴더 밑에 dependency(package)를
+설치했었음.
+이럴 경우 여러 패키지에서 사용하는 dependecy(package)의 경우
+중복해서 설치되고, 윈도우의 경우 경로에 대한 제한이 걸려있어
+문제가 발생하기도 했었음.
+최근 npm의 경우 package설치에 필요한 모든 module dependency(package)도
+package와 동일하게 node_module밑에 설치함.
+
+만약 특정 package설치 시 필요한 특정 dependency버전과
+기존 node_module에 설치된 package의 버전이 다른 경우에는
+설치할 package 밑에 dependcy를 설치함.
+
+
+node_modules 폴더의 경우 사이즈가 크므로,
+메일로 프로젝트 전달시 삭제함.
+package.json 파일만 있어도, npm -i 를 하게되면
+동일한 node_modules 폴더가 생성됨
+( ex: git의 경우 .gitignore 파일을 만들고 node_modules/ 를 입력해 넣고
+사용하면됨 )
