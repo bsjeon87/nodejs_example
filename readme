@@ -43,3 +43,47 @@ Minor( 기능 추가 하지만 API는 변경되지 않음. ).
 // 실제 설치되어 있는 버전확인을 위해서는 node_modules 폴더에
 //해당 패키지의 package.json의 version을 확인하면 확인가능.
 // 혹은 npm list를 입력하여 확인.( npm list --depth=0 : 설치한 패키지만 확인원하는 경우)
+
+
+npm view ( ex npm view mongoose )
+=> 모듈의 package.json 확인가능함. ( 
+       ex; dependcy : npm view mongoose dependences        
+ )
+
+ module downgrade or change version (특정버전으로 이동가능.)
+ npm i mongoose@2.4.2
+
+ npm outdated => remote 저장소에 다운가능 버전등의 정보 확인가능.
+ npm update => package.json에 있는 정보바탕으로 다운가능버전이 있으면 업데이트
+
+개발중일때만 사용하는 dependency 사용가능함.
+npm i jshint --save-dev (실제 설치됨 node_modules 밑에)
+차이는 오직 package.json내에 devDependencies에서 구별됨.
+
+npm un mongoose -> 삭제 / package.json , node_modules 모두에서 삭제됨
+
+global 모듈 설치( 특정 폴더/특정 프로젝트에 설치하지 않고 전체에 적용)
+ex: npm i -g react-create  (명령으로 만들어 어느 폴더에서나 사용가능.)
+                           (어느폴더에서나  create-react-app 패키지 실행가능)
+
+
+
+배포(npm module)
+$ npm adduser
+Username: bsjeon
+Password:                  //// ZXLKQWpo4043
+Email: (this IS public) jbsgo@naver.com
+Logged in as bsjeon on https://registry.npmjs.org/.
+
+$ npm login
+Username: bsjeon
+Password:
+Email: (this IS public) jbsgo@naver.com
+Logged in as bsjeon on https://registry.npmjs.org/.
+
+$ npm publish  //에러발생시 (package json의 name을 unique하게 만듬.)
+               //혹은 account 인증
+
+사용 ->
+npm i lion-lib-jeonbs (node_module밑에 이전에 deploy진행한 코드와
+메타데이터가 포함됨. 이 외에도 deploy시 자동 추가된 내용도 포함됨)
