@@ -87,3 +87,6 @@ $ npm publish  //에러발생시 (package json의 name을 unique하게 만듬.)
 사용 ->
 npm i lion-lib-jeonbs (node_module밑에 이전에 deploy진행한 코드와
 메타데이터가 포함됨. 이 외에도 deploy시 자동 추가된 내용도 포함됨)
+
+모듈 업데이트시
+package.json의 version업데이트 후(수동 package.json 혹은 npm version minor사용) publish
