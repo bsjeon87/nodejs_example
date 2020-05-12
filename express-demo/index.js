@@ -25,6 +25,14 @@ app.get("/api/courses/:id", (req, res) => {
   res.send(course);
 });
 
+function validateCourse(course) {
+  //validate
+  //If invalid , returen 400 - Bad request
+  const schema = {
+    name: Joi.string().min(3).required(),
+  };
+  return Joi.validate(course, schema);
+}
 app.put("/api/courses/:id", (req, res) => {
   // Look up the course
   //If not existing , return 404
@@ -33,13 +41,10 @@ app.put("/api/courses/:id", (req, res) => {
     res.status(404).send("The course with the given ID was not found");
   //validate
   //If invalid , returen 400 - Bad request
-  const schema = {
-    name: Joi.string().min(3).required(),
-  };
-  const result = Joi.validate(req.body, schema);
-  if (result.error) {
+  const { error } = validateCourse(req.body);
+  if (error) {
     //res.status(400).send(result.error);
-    res.status(400).send(result.error.details[0].message);
+    res.status(400).send(error.details[0].message);
     return;
   }
   //update
@@ -48,13 +53,9 @@ app.put("/api/courses/:id", (req, res) => {
   res.send(course);
 });
 app.post("/api/courses", (req, res) => {
-  const schema = {
-    name: Joi.string().min(3).required(),
-  };
-  const result = Joi.validate(req.body, schema);
-  if (result.error) {
-    //res.status(400).send(result.error);
-    res.status(400).send(result.error.details[0].message);
+  const { error } = validateCourse(req.body);
+  if (error) {
+    res.status(400).send(error.details[0].message);
     return;
   }
   const course = {
