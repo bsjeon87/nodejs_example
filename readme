@@ -97,3 +97,7 @@ nodemon
 
 node app에서 port를 환경변수에서 가지고 오게 설정
 => 환경변수는 mac/linux: export PORT=5000 , set PORT=5000
+
+
+----
+Post 테스트 시 => chrome extension postman사용. (post , raw -> json )
