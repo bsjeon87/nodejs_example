@@ -19,8 +19,10 @@ app.get("/api/courses", (req, res) => {
 });
 app.get("/api/courses/:id", (req, res) => {
   const course = courses.find((c) => c.id === parseInt(req.params.id));
-  if (!course)
+  if (!course) {
     res.status(404).send("The course with the given ID was not found");
+    return;
+  }
   console.log("here");
   res.send(course);
 });
@@ -33,12 +35,30 @@ function validateCourse(course) {
   };
   return Joi.validate(course, schema);
 }
+app.delete("/api/courses/:id", (req, res) => {
+  // Look up the course
+  //If not existing , return 404
+  const course = courses.find((c) => c.id === parseInt(req.params.id));
+  if (!course) {
+    res.status(404).send("The course with the given ID was not found");
+    return;
+  }
+
+  //delete
+  const index = courses.indexOf(course);
+  courses.splice(index, 1);
+  // return the updated course
+  res.send(course);
+});
+
 app.put("/api/courses/:id", (req, res) => {
   // Look up the course
   //If not existing , return 404
   const course = courses.find((c) => c.id === parseInt(req.params.id));
-  if (!course)
+  if (!course) {
     res.status(404).send("The course with the given ID was not found");
+    return;
+  }
   //validate
   //If invalid , returen 400 - Bad request
   const { error } = validateCourse(req.body);
